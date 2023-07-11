@@ -4,6 +4,7 @@ import {
   useEffect,
   ChangeEvent,
   ClipboardEvent,
+  FocusEvent,
 } from 'react';
 
 import { getTagsHandler } from '@/helpers/base';
@@ -66,6 +67,13 @@ export const useTags = (options: UseTagsOptions) => {
     onRemove?.(text);
   };
 
+  const onBlurHandler = (_e: FocusEvent<HTMLInputElement, Element>) => {
+    const { value: _inputValue } = _e.target as HTMLInputElement;
+
+    updateTabs(_inputValue);
+    setInputValue('');
+  };
+
   useEffect(() => {
     onChange?.(tags);
   }, [tags]);
@@ -81,5 +89,6 @@ export const useTags = (options: UseTagsOptions) => {
     onKeyUpHandler,
     onRemoveHandler,
     onPasteHandler,
+    onBlurHandler,
   };
 };

@@ -47,6 +47,7 @@ export const TagsInput = forwardRef((props: TagsInputProps, ref) => {
     onKeyUpHandler,
     onRemoveHandler,
     onPasteHandler,
+    onBlurHandler: onTagBlurHandler,
   } = useTags(props);
 
   return (
@@ -61,7 +62,10 @@ export const TagsInput = forwardRef((props: TagsInputProps, ref) => {
         value={inputValue}
         onPaste={onPasteHandler}
         onFocus={onFocusHandler}
-        onBlur={onBlurHandler}
+        onBlur={(e) => {
+          onBlurHandler?.(e);
+          onTagBlurHandler?.(e);
+        }}
         onKeyUp={onKeyUpHandler}
         onChange={onChangeHandler}
         style={controlStyle}
