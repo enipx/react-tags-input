@@ -63,7 +63,7 @@ type GetTagsHandlerOptions = Omit<TagsInputProps, 'value'> & {
 export const getTagsHandler = (options: GetTagsHandlerOptions) => {
   const { value, tags, onExist, onAdd, separator } = options;
 
-  const newTags = tags || [];
+  const newTags: string[] = [...(tags || [])];
 
   const valueArray = value.split(separator);
 

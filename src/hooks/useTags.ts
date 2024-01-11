@@ -38,6 +38,7 @@ export const useTags = (options: UseTagsOptions) => {
       tags,
       separator,
     });
+
     setTags(newTags);
 
     setInputValue('');

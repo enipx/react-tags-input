@@ -1,6 +1,6 @@
 {
   "name": "@enipx/react-tags-input",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "concise and efficient solution for adding tags input.⚡",
   "main": "dist/commonjs/index.js",
   "module": "dist/module/index.js",
