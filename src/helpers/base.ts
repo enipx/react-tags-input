@@ -63,7 +63,7 @@ type GetTagsHandlerOptions = Omit<TagsInputProps, 'value'> & {
 export const getTagsHandler = (options: GetTagsHandlerOptions) => {
   const { value, tags, onExist, onAdd, separator } = options;
 
-  const newTags = tags;
+  const newTags = tags || [];
 
   const valueArray = value.split(separator);
 
@@ -79,8 +79,10 @@ export const getTagsHandler = (options: GetTagsHandlerOptions) => {
       return;
     }
 
-    newTags.push(_value);
-    onAdd?.(_value);
+    if (Array.isArray(newTags)) {
+      newTags.push(_value);
+      onAdd?.(_value);
+    }
   });
 
   return newTags;
