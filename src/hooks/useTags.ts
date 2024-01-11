@@ -14,11 +14,20 @@ import { TagsInputProps } from '@/input/input.type';
 type UseTagsOptions = TagsInputProps;
 
 export const useTags = (options: UseTagsOptions) => {
-  const { value, onRemove, onChange, separator = ',', onKeyUp } = options;
+  const {
+    value,
+    onRemove,
+    onChange,
+    separator = ',',
+    onKeyUp,
+    placeholder: defaultPlaceholder,
+  } = options;
 
   const separatorKeys = [separator, 'Enter'];
 
   const [tags, setTags] = useState(value || []);
+
+  const [placeholder, setPlaceholder] = useState(defaultPlaceholder || '');
 
   const [inputValue, setInputValue] = useState('');
 
@@ -76,6 +85,12 @@ export const useTags = (options: UseTagsOptions) => {
 
   useEffect(() => {
     onChange?.(tags);
+
+    if (tags.length === 0) {
+      setPlaceholder(defaultPlaceholder || '');
+    } else {
+      setPlaceholder('');
+    }
   }, [tags]);
 
   useEffect(() => {
@@ -90,5 +105,6 @@ export const useTags = (options: UseTagsOptions) => {
     onRemoveHandler,
     onPasteHandler,
     onBlurHandler,
+    placeholder,
   };
 };

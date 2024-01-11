@@ -48,6 +48,7 @@ export const TagsInput = forwardRef((props: TagsInputProps, ref) => {
     onRemoveHandler,
     onPasteHandler,
     onBlurHandler: onTagBlurHandler,
+    placeholder,
   } = useTags(props);
 
   return (
@@ -71,6 +72,7 @@ export const TagsInput = forwardRef((props: TagsInputProps, ref) => {
         style={controlStyle}
         ref={ref as any}
         {...rest}
+        placeholder={placeholder}
       />
     </div>
   );

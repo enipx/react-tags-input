@@ -27,6 +27,7 @@ Default.args = {
     background: 'rgab(0,0,0,.1)',
   },
   value: ['hashir', 'enipx'],
+  placeholder: 'Add tags...',
 };
 
 export const Disabled: Story<TagsInputProps> = Template.bind({});
